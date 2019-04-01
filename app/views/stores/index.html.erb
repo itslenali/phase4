@@ -198,6 +198,25 @@ a {
 a:hover {
   color: hotpink;
 }
+a1 {
+  color: blue;
+}
+a1:hover {
+  color: #FF0999;
+}
+.container2 {
+    font-size: 1em;
+    font-family: courier;
+    outline: 2px solid #FF0999;
+    background-color: #FFF;
+    margin: 0px;
+    padding: 0px;
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:70px;
+    width:100%;
+}
 
 </style> 
   
@@ -235,10 +254,21 @@ a:hover {
         <td><button class="button3"><%= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-    
-    
   </tbody>
 </table>
 </h3>
 
 
+<br>
+<br>
+<div class="container2">
+<div id="copyright" align="center"><font color="#FF0999">
+  <br>
+  Webmaster: <a1 href= mail_to "lenal@andrew.cmu.edu">Lena Li </a1>Copyright © 2019
+  <br><br>
+   ♡
+  <br><br></font>
+</div>
+</div>
+
+</html>
