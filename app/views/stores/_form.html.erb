@@ -3,7 +3,6 @@
 
 <!------ Include the above in your HEAD tag ---------->
 
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -46,36 +45,265 @@
   </div>
 </nav>
 
-
-   <!-- Navigation END -->
+<!-- Navigation END -->
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<br>
-<br><br><br><br>
-
 <!------ Include the above in your HEAD tag ---------->
 
+<!------ NAVIGATION BAR START ---------->
 
+  <h1 align="center" style="font-family:didot;">
+   <button class="button4"><%= link_to 'Employees', employees_path %></button>
+    &nbsp&nbsp
+  <button class="button4"><%= link_to 'Stores', stores_path %></button>
+    &nbsp&nbsp
+  <button class="button5"><%= link_to 'Assignments', assignments_path %></button>
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <button class="button6"><%= link_to 'New Store', new_store_path %></button>
+  </h1>
+  <!------ NAVIGATION BAR END ---------->
+  
+<style>
+h3 {
+    font-size: 1.5em;
+    background-color: #FFFF;
+    outline: 1px solid #FF0999;
+    margin: 200px;
+    padding: 0px;
+}
+  h2 {
+    font-size: 1.5em;
+    background-color: #FFFF;
+    outline: 1px solid #FF0999;
+    margin: 100px;
+    padding: 20px;
+    margin-right: 300px;
+    margin-left: 300px;
+}
+h1 {
+    font-size: 1.5em;
+    font-family: garamond;
+    outline: 5px dotted #FF0999;
+    background-color: #FFFF;
+    margin: 30px;
+    padding: 30px;
+}
+h4 {
+    font-size: 1.5em;
+    font-family: garamond;
+    outline: none;
+    background-color: #FFFF;
+    margin: 100px;
+    padding: 0px;
+}
+.container1 {
+    font-size: 1em;
+    font-family: garamond;
+    outline: 2px dashed blue;
+    background-color: #FFFF;
+    margin: 30px;
+    padding: 30px;
+    background-image: url("https://images.unsplash.com/photo-1496280307390-7f58b19658b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=802&q=80");
+    height: auto; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+th, td {
+  border-bottom: 0.5px solid #ddd;
+}
+tr:hover {
+  background-color: #ffdccc;
+  
+}
+.button1 {
+  background-color: #b3fff0;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button1:hover {
+  background-color: blue;
+}
+.button2 {
+  background-color: #ff9666;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button2:hover {
+  background-color: blue;
+}
+.button3 {
+  background-color: #ffcc00;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button3:hover {
+  background-color: blue;
+}
+.button4 {
+  background-color: lightpink;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button4:hover {
+  background-color: blue;
+}
+.button5 {
+  background-color: #FF0999;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button5:hover {
+  background-color: blue;
+}
+.button6 {
+  background-color: #f9d2f9;
+  border: 10px solid blue;
+  color: violet;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+body {
+      background-color: #331a00;
+  }
+
+.button6:hover {
+  background-color: #f9d2f9;
+}
+a {
+  color: black;
+}
+a:hover {
+  color: hotpink;
+}
+</style>
 
 <%= simple_form_for(@store) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <h4 style="font-family:courier; font-size:22px;"><%= f.error_notification %></h4>
+  <h4><%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %></h4>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
+<div class="container1">
+<h2>
+<table class="table" cellspacing="5" width="50%" cellpadding="5" style="font-family:courier; font-size:16px;">
+<thead><p style="font-family:courier; font-size:22px;" align="left"><strong>A&M Store Information</strong></p>
+<thead align="right">
+<tr align="right">
+    <td>
+      <div class="input-field">
+        <%= f.input :name %>
+      </div>
+    </td>
+<tr>
+  <td>
+    <div class="input-field">
     <%= f.input :street %>
-    <%= f.input :city %>
-    <%= f.input :state %>
-    <%= f.input :zip %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+       <div class="input-field">
+         <%= f.input :city %>
+       </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="input-field">
+      <%= f.input :state %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="input-field">
+      <%= f.input :zip %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="input-field">
     <%= f.input :phone %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="input-field">
     <%= f.input :latitude %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="input-field">
     <%= f.input :longitude %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="input-field">
     <%= f.input :active %>
-  </div>
-
-  <div class="form-actions">
+    </div>
+  </td>
+</tr>
+<tr bgcolor="violet">
+  <td>
+    <div class="form-actions">
     <%= f.button :submit %>
-  </div>
+    </div>
+  </td>
+</tr>
+
+</table>
+
+</h2>
 <% end %>
+
+</div>
+
+</body>
+</html>

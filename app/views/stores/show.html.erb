@@ -3,7 +3,6 @@
 
 <!------ Include the above in your HEAD tag ---------->
 
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -46,113 +45,267 @@
   </div>
 </nav>
 
-
-   <!-- Navigation END -->
+<!-- Navigation END -->
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<br>
-<br><br><br><br>
-
 <!------ Include the above in your HEAD tag ---------->
 
+<!------ NAVIGATION BAR START ---------->
+<br><br>
+  <h1 align="center" style="font-family:didot;">
+   <button class="button4"><%= link_to 'Employees', employees_path %></button>
+    &nbsp&nbsp
+  <button class="button4"><%= link_to 'Stores', stores_path %></button>
+    &nbsp&nbsp
+  <button class="button5"><%= link_to 'Assignments', assignments_path %></button>
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <button class="button6"><%= link_to 'New Employee', new_employee_path %></button>
+  </h1>
+  <!------ NAVIGATION BAR END ---------->
+  
+<style>
+body {
+      background-color: #331a00;
+  }
+h3 {
+    font-size: 1.5em;
+    background-color: #FFFF;
+    outline: 1px solid #FF0999;
+    margin: 200px;
+    padding: 0px;
+}
+  h2 {
+    font-size: 1.5em;
+    background-color: #FFFF;
+    outline: 1px solid #FF0999;
+    margin: 100px;
+    padding: 20px;
+    margin-right: 300px;
+    margin-left: 300px;
+}
+h1 {
+    font-size: 1.5em;
+    font-family: garamond;
+    outline: 5px dotted #FF0999;
+    background-color: #FFFF;
+    margin: 30px;
+    padding: 30px;
+}
+h4 {
+    font-size: 1.5em;
+    font-family: courier;
+    outline: none;
+    background-color: #FFFF;
+    margin: 100px;
+    padding: 0px;
+}
+th, td {
+  border-bottom: 0.5px solid #ddd;
+}
+tr:hover {
+  background-color: #ffdccc;
+  
+}
+.container1 {
+    font-size: 1.5em;
+    font-family: garamond;
+    outline: 5px dotted #FF0999;
+    background-color: #FFFF;
+    margin: 30px;
+    padding: 30px;
+    background-image: url("https://images.unsplash.com/photo-1496280307390-7f58b19658b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=802&q=80");
+    height: auto; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.button1 {
+  background-color: #b3fff0;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
 
+.button1:hover {
+  background-color: blue;
+}
+.button2 {
+  background-color: #ff9666;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
 
+.button2:hover {
+  background-color: blue;
+}
+.button3 {
+  background-color: #ffcc00;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
 
-<p id="notice"><%= notice %></p>
+.button3:hover {
+  background-color: blue;
+}
+.button4 {
+  background-color: lightpink;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
 
+.button4:hover {
+  background-color: blue;
+}
+.button5 {
+  background-color: #FF0999;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
 
- <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">A&M Creamery</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Dashboard<span class="sr-only"></span>
-              </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">My Profile</a>
-        </li>
-       
-      </ul>
-    </div>
-  </div>
-</nav>
+.button5:hover {
+  background-color: blue;
+}
+.button6 {
+  background-color: violet;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
 
+.button6:hover {
+  background-color: yellow;
+}
+a {
+  color: black;
+}
+a:hover {
+  color: hotpink;
+}
+</style>
+   
+<font color="#00cca3"><h4 id="notice"><%= notice %></h4></font>
+<div class="container1">
+<h2>
+<table class="table" cellspacing="5" width="50%" cellpadding="5" style="font-family:courier; font-size:22px;">
+<thead><p style="font-family:courier; font-size:22px;" align="center"><font color="turquoise"><strong>Store No. <%=@store.id%></strong></p>
+<thead align="right">
+<tr align="right">
+    <td>
+      Name:
+    </td>
+    <td align="left">
+      <%= @store.name %>
+    </td>
+<tr>
+  <td>
+    Street:
+  </td>
+  <td align="left">
+    <%= @store.street %>
+  </td>
+</tr>
+<tr>
+  <td>
+    City:
+  </td>
+  <td align="left">
+    <%= @store.city %>
+  </td>
+</tr>
+<tr>
+  <td>
+    State:
+  </td>
+  <td align="left">
+    <%= @store.state %>
+  </td>
+</tr>
+<tr>
+  <td>
+    Zip:
+  </td>
+  <td align="left">
+    <%= @store.zip %>
+  </td>
+</tr>
+<tr>
+  <td>
+    Phone:
+  </td>
+  <td align="left">
+    <%= @store.phone %>
+  </td>
+</tr>
+<tr>
+  <td>
+    Latitude:
+  </td>
+  <td align="left">
+    <%= @store.latitude %>
+  </td>
+</tr>
+<tr>
+  <td>
+    Longitude:
+  </td>
+  <td align="left">
+    <%= @store.longitude %>
+  </td>
+</tr>
+<tr>
+  <td>
+    Active:
+  </td>
+  <td align="left">
+    <%= @store.active %>
+  </td>
+</tr>
+<tr>
+  <td>
+    <button class="button1"><%= link_to 'Back', stores_path %>
+  </td>
+  <td align="left">
+    <button class="button1"><%= link_to 'Edit', edit_store_path(@store) %>
+  </td>
+</tr>
+</table>
 
+</h2>
 
-
-
-<p id="notice"><%= notice %></p>
-
-<p align="center">
-  <strong>Name:</strong>
-    <br>
-
-  <%= @store.name %>
-</p>
-
-<p align="center">
-  <strong>Street:</strong>
-      <br>
-
-  <%= @store.street %>
-</p>
-
-<p align="center">
-  <strong>City:</strong>
-      <br>
-
-  <%= @store.city %>
-</p>
-
-<p align="center">
-  <strong>State:</strong>
-      <br>
-
-  <%= @store.state %>
-</p>
-
-<p align="center">
-  <strong>Zip:</strong>
-      <br>
-
-  <%= @store.zip %>
-</p>
-
-<p align="center">
-  <strong>Phone:</strong>
-      <br>
-
-  <%= @store.phone %>
-</p>
-
-<p align="center">
-  <strong>Latitude:</strong>
-      <br>
-
-  <%= @store.latitude %>
-</p>
-
-<p align="center">
-  <strong>Longitude:</strong>
-      <br>
-
-  <%= @store.longitude %>
-</p>
-
-<p align="center">
-  <strong>Active:</strong>
-      <br>
-
-  <%= @store.active %>
-</p>
-
-<%= link_to 'Edit', edit_store_path(@store) %> |
-<%= link_to 'Back', stores_path %>
+</div>

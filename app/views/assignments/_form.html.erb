@@ -52,17 +52,30 @@
 
 <!------ Include the above in your HEAD tag ---------->
 
+<!------ NAVIGATION BAR START ---------->
+
+  <h1 align="center" style="font-family:didot;">
+   <button class="button4"><%= link_to 'Employees', employees_path %></button>
+    &nbsp&nbsp
+  <button class="button4"><%= link_to 'Stores', stores_path %></button>
+    &nbsp&nbsp
+  <button class="button5"><%= link_to 'Assignments', assignments_path %></button>
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <button class="button6"><%= link_to 'New Assignment', new_assignment_path %></button>
+  </h1>
+  <!------ NAVIGATION BAR END ---------->
+
 <style>
-h1 {
+h3 {
     font-size: 1.5em;
-    background-color: #FFFF;
+    background-color: #FAFAFA;
     outline: 1px solid #FF0999;
     margin: 200px;
     padding: 0px;
 }
   h2 {
     font-size: 1.5em;
-    background-color: #FFFF;
+    background-color: #FAFAFA;
     outline: 1px solid #FF0999;
     margin: 100px;
     padding: 20px;
@@ -70,13 +83,30 @@ h1 {
     margin-left: 300px;
 
 }
-h3 {
+h1 {
     font-size: 1.5em;
     font-family: garamond;
     outline: 5px dotted #FF0999;
-    background-color: #FFFF;
+    background-color: #FAFAFA;
     margin: 30px;
     padding: 30px;
+}
+body {
+      background-color: #331a00;
+  }
+.container1 {
+    font-size: 1.5em;
+    font-family: garamond;
+    outline: 2px dashed blue;
+    background-color: #FAFAFA;
+    margin: 30px;
+    padding: 30px;
+    background-image: url("https://images.unsplash.com/photo-1535384515441-5a7293014fce?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 }
 th, td {
   border-bottom: 0.5px solid #ddd;
@@ -161,8 +191,8 @@ tr:hover {
   background-color: blue;
 }
 .button6 {
-  background-color: violet;
-  border: 0px;
+  background-color: #f9d2f9;
+  border: 10px solid blue;
   color: white;
   margin: 3px;
   padding: 10px 50px;
@@ -173,7 +203,7 @@ tr:hover {
 }
 
 .button6:hover {
-  background-color: yellow;
+  background-color: #f9d2f9;
 }
 a {
   color: black;
@@ -182,36 +212,23 @@ a:hover {
   color: hotpink;
 }
 </style>
-
-<!------ NAVIGATION BAR START ---------->
-
-  <h3 align="center" style="font-family:didot;">
-   <button class="button4"><%= link_to 'Employees', employees_path %></button>
-    &nbsp&nbsp
-  <button class="button4"><%= link_to 'Stores', stores_path %></button>
-    &nbsp&nbsp
-  <button class="button5"><%= link_to 'Assignments', assignments_path %></button>
-  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <button class="button6"><%= link_to 'New Assignment', new_assignment_path %></button>
-  </h3>
-  <!------ NAVIGATION BAR END ---------->
-
+<div class="container1">
 <h2>
-<%= form_with(model: assignment, local: true) do |form| %>
+<%= simple_form_for(@assignment) do |form| %>
   <% if assignment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+      <h1 style="font-family:courier; font-size:12px;"><font color="red"><%= pluralize(assignment.errors.count, "error") %> prohibited this assignment from being saved:</h1>
 
       <ul>
-      <% assignment.errors.full_messages.each do |message| %>
+      <h1 style="font-family:courier; font-size:12px;"><% assignment.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-      <% end %>
+      <% end %></h1>
       </ul>
     </div>
   <% end %>
 
 <table class="table" cellspacing="5" width="50%" cellpadding="5" style="font-family:courier; font-size:22px;">
-<thead><p style="font-family:courier; font-size:22px;" align="left"><strong>New Assignment</strong></p>
+<thead><p style="font-family:courier; font-size:22px;" align="left"><strong>New/Edit Assignment</strong></p>
 
 <thead align="right">
 
@@ -236,9 +253,7 @@ a:hover {
 <tr>
   <td>
     <div class="input-field">
-   <%= form.label :start_date %>
-<%= form.text_field :start_date, prompt: "Start Date", class: "datepicker", :value =>
-(form.object.start_date.strftime('%B %d, %Y') if form.object.start_date != nil)%> </div>
+     <%= form.input :start_date %> 
     </div>
   </td>
 </tr>
@@ -246,9 +261,8 @@ a:hover {
 <tr>
   <td>
     <div class="input-field">
-    <%= form.label :end_date %>
-    <%= form.text_field :end_date, prompt: "End Date", class: "datepicker", :value =>
-    (form.object.end_date.strftime('%B %d, %Y') if form.object.end_date != nil) %> </div>
+    <%= form.input :end_date %>
+    </div>
   </div>
   </td>
 </tr>
@@ -259,10 +273,10 @@ a:hover {
     <%= form.number_field :pay_level %>
   </div>
   
-<tr>
+<tr bgcolor="violet">
   <td>
     <div class="actions">
-    <%= form.submit %>
+    <%= form.button :submit %>
   </div>
   </td>
 </tr>
@@ -273,3 +287,4 @@ a:hover {
   
 <% end %>
 
+</div>

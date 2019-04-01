@@ -3,7 +3,6 @@
 
 <!------ Include the above in your HEAD tag ---------->
 
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -46,58 +45,252 @@
   </div>
 </nav>
 
-
-   <!-- Navigation END -->
+<!-- Navigation END -->
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<br>
-<br><br><br><br>
-
 <!------ Include the above in your HEAD tag ---------->
 
+<!------ NAVIGATION BAR START ---------->
+<br><br>
+  <h1 align="center" style="font-family:didot;">
+   <button class="button4"><%= link_to 'Employees', employees_path %></button>
+    &nbsp&nbsp
+  <button class="button4"><%= link_to 'Stores', stores_path %></button>
+    &nbsp&nbsp
+  <button class="button5"><%= link_to 'Assignments', assignments_path %></button>
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <button class="button6"><%= link_to 'New Employee', new_employee_path %></button>
+  </h1>
+  <!------ NAVIGATION BAR END ---------->
+  
+<style>
+h3 {
+    font-size: 1.5em;
+    background-color: #FFFF;
+    outline: 1px solid #FF0999;
+    margin: 200px;
+    padding: 0px;
+}
+  h2 {
+    font-size: 1.5em;
+    background-color: #FFFF;
+    outline: 1px solid #FF0999;
+    margin: 100px;
+    padding: 20px;
+    margin-right: 300px;
+    margin-left: 300px;
+}
+h1 {
+    font-size: 1.5em;
+    font-family: garamond;
+    outline: 5px dotted #FF0999;
+    background-color: #FFFF;
+    margin: 30px;
+    padding: 30px;
+}
+h4 {
+    font-size: 1.5em;
+    font-family: courier;
+    outline: none;
+    background-color: #FFFF;
+    margin: 100px;
+    padding: 0px;
+}
+.container1 {
+    font-size: 1.5em;
+    font-family: garamond;
+    outline: 5px dotted #FF0999;
+    background-color: #FFFF;
+    margin: 30px;
+    padding: 30px;
+    background-image: url("https://images.unsplash.com/photo-1529503257657-e0ce256b46d1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
+    height: auto; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+}
+th, td {
+  border-bottom: 0.5px solid #ddd;
+}
+tr:hover {
+  background-color: #ffdccc;
+  
+}
+.button1 {
+  background-color: #b3fff0;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
 
+.button1:hover {
+  background-color: blue;
+}
+.button2 {
+  background-color: #ff9666;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
 
+.button2:hover {
+  background-color: blue;
+}
+.button3 {
+  background-color: #ffcc00;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
 
+.button3:hover {
+  background-color: blue;
+}
+.button4 {
+  background-color: lightpink;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
 
+.button4:hover {
+  background-color: blue;
+}
+.button5 {
+  background-color: #FF0999;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
 
-<p id="notice"><%= notice %></p>
+.button5:hover {
+  background-color: blue;
+}
+.button6 {
+  background-color: violet;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
 
-<p>
-  <strong>First name:</strong>
-  <%= @employee.first_name %>
-</p>
+.button6:hover {
+  background-color: yellow;
+}
+a {
+  color: black;
+}
+a:hover {
+  color: hotpink;
+}
+body1 {
+      background-color: #331a00;
+      
+  }
+</style>
+   
+<font color="#00cca3"><h4 id="notice"><%= notice %></h4></font>
+<div class="container1">
+<h2>
+<table class="table" cellspacing="5" width="50%" cellpadding="5" style="font-family:courier; font-size:22px;">
+<thead><p style="font-family:courier; font-size:22px;" align="center"><font color="turquoise"><strong>Employee No. <%=@employee.id%></strong></p>
+<thead align="right">
+<tr align="right">
+    <td>
+      First Name:
+    </td>
+    <td align="left">
+      <%= @employee.first_name %>
+    </td>
+<tr>
+  <td>
+    Last Name:
+  </td>
+  <td align="left">
+    <%= @employee.last_name %>
+  </td>
+</tr>
+<tr>
+  <td>
+    SSN:
+  </td>
+  <td align="left">
+    <%= @employee.ssn %>
+  </td>
+</tr>
+<tr>
+  <td>
+    Date of Birth:
+  </td>
+  <td align="left">
+    <%= @employee.date_of_birth %>
+  </td>
+</tr>
+<tr>
+  <td>
+    Phone:
+  </td>
+  <td align="left">
+    <%= @employee.phone %>
+  </td>
+</tr>
+<tr>
+  <td>
+    Role:
+  </td>
+  <td align="left">
+    <%= @employee.role %>
+  </td>
+</tr>
+<tr>
+  <td>
+    Active:
+  </td>
+  <td align="left">
+    <%= @employee.active %>
+  </td>
+</tr>
+<tr>
+  <td>
+    <button class="button1"><%= link_to 'Back', employees_path %>
+  </td>
+  <td align="left">
+    <button class="button1"><%= link_to 'Edit', edit_employee_path(@employee) %>
+  </td>
+</tr>
+</table>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @employee.last_name %>
-</p>
-
-<p>
-  <strong>Ssn:</strong>
-  <%= @employee.ssn %>
-</p>
-
-<p>
-  <strong>Date of birth:</strong>
-  <%= @employee.date_of_birth %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @employee.phone %>
-</p>
-
-<p>
-  <strong>Role:</strong>
-  <%= @employee.role %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @employee.active %>
-</p>
-
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+</h2>
+</div>
