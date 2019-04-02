@@ -1,29 +1,14 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-
-<!------ Include the above in your HEAD tag ---------->
-
-<!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
+    <!-- BOOTSTRAP CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body>
-    
-    <style>
-       body {
-    background-image: url("/phase3_starter/app/views/application/alex.jpg");
-    background-position: center center;
-    background-size: 100% 100%;
-}
-
-    </style>
-   <!-- Navigation -->
+   <!-- DASHBOARD -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
     <a class="navbar-brand" href="/" style="font-family:Didot, serif; font-size:20px; color:#FF0999;">A&M Crémerie</a>
@@ -33,27 +18,19 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/" style="font-family:courier; font-size:12px;">DASHBOARD<span class="sr-only"></span>
-              </a>
+          <a class="nav-link" href="/" style="font-family:courier; font-size:12px;">DASHBOARD<span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" style="font-family:courier; font-size:12px;">MY PROFILE</a>
         </li>
-       
       </ul>
     </div>
   </div>
 </nav>
-
-<!-- Navigation END -->
-
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<!------ Include the above in your HEAD tag ---------->
-
-<!------ NAVIGATION BAR START ---------->
-
+<!------ NAVIGATION BAR ---------->
   <h1 align="center" style="font-family:didot;">
    <button class="button4"><%= link_to 'Employees', employees_path %></button>
     &nbsp&nbsp
@@ -63,8 +40,101 @@
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   <button class="button6"><%= link_to 'New Store', new_store_path %></button>
   </h1>
-  <!------ NAVIGATION BAR END ---------->
   
+<!------ STORES FORM ERRORS ---------->
+<div class="container1">
+<h2>
+<%= simple_form_for(@store) do |f| %>
+  <% if store.errors.any? %>
+     <div id="error_explanation">
+      <h1 style="font-family:courier; font-size:12px;"><font color="red"><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h1>
+      <h1 style="font-family:courier; font-size:12px;" align="left"><% store.errors.full_messages.each do |message| %>
+        <li style="font-family:courier; font-size:12px;"><%= message %></li>
+      <% end %></h1>
+    </div>
+<% end %>
+
+<!------ STORES FORM TABLE ---------->
+<table class="table" cellspacing="5" width="50%" cellpadding="5" style="font-family:courier; font-size:12px;">
+<thead><p style="font-family:courier; font-size:16px;" align="left"><strong>A&M Store Information</strong></p>
+<thead align="right">
+<tr align="right">
+    <td>
+      <div class="input-field">
+        <%= f.input :name %>
+      </div>
+    </td>
+<tr>
+  <td>
+    <div class="input-field">
+    <%= f.input :street %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+       <div class="input-field">
+         <%= f.input :city %>
+       </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="input-field">
+      <%= f.input :state %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="input-field">
+      <%= f.input :zip %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="input-field">
+    <%= f.input :phone %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="input-field">
+    <%= f.input :latitude %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="input-field">
+    <%= f.input :longitude %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="input-field">
+    <%= f.input :active %>
+    </div>
+  </td>
+</tr>
+<tr bgcolor="#cc0052">
+  <td>
+    <div class="form-actions">
+    <%= f.button :submit %>
+    </div>
+  </td>
+</tr>
+</table>
+</h2>
+<% end %>
+</div>
+</body>
+<br><br>
+
+<!------ CSS STYLING FOR STORES FORM ---------->
 <style>
 h3 {
     font-size: 1.5em;
@@ -238,100 +308,11 @@ a1:hover {
 }
 </style>
 
-<%= simple_form_for(@store) do |f| %>
-  <h4 style="font-family:courier; font-size:22px;"><%= f.error_notification %></h4>
-  <h4><%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %></h4>
-
-<div class="container1">
-<h2>
-<table class="table" cellspacing="5" width="50%" cellpadding="5" style="font-family:courier; font-size:16px;">
-<thead><p style="font-family:courier; font-size:22px;" align="left"><strong>A&M Store Information</strong></p>
-<thead align="right">
-<tr align="right">
-    <td>
-      <div class="input-field">
-        <%= f.input :name %>
-      </div>
-    </td>
-<tr>
-  <td>
-    <div class="input-field">
-    <%= f.input :street %>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td>
-       <div class="input-field">
-         <%= f.input :city %>
-       </div>
-  </td>
-</tr>
-<tr>
-  <td>
-    <div class="input-field">
-      <%= f.input :state %>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td>
-    <div class="input-field">
-      <%= f.input :zip %>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td>
-    <div class="input-field">
-    <%= f.input :phone %>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td>
-    <div class="input-field">
-    <%= f.input :latitude %>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td>
-    <div class="input-field">
-    <%= f.input :longitude %>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td>
-    <div class="input-field">
-    <%= f.input :active %>
-    </div>
-  </td>
-</tr>
-<tr bgcolor="violet">
-  <td>
-    <div class="form-actions">
-    <%= f.button :submit %>
-    </div>
-  </td>
-</tr>
-
-</table>
-
-</h2>
-<% end %>
-
-</div>
-
-</body>
-
-<br>
-<br>
+<!------ FOOTER ---------->
 <div class="container2">
 <div id="copyright" align="center"><font color="#FF0999">
   <br>
-  Webmaster: <a1 href= mail_to "lenal@andrew.cmu.edu">Lena Li </a1>Copyright © 2019
+  Webmaster: <a href= mail_to "lenal@andrew.cmu.edu">Lena Li</a> Copyright © 2019
   <br><br>
    ♡
   <br><br></font>

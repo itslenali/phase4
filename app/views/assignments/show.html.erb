@@ -1,29 +1,14 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-
-<!------ Include the above in your HEAD tag ---------->
-
-<!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body>
-    
-    <style>
-       body {
-    background-image: url("/phase3_starter/app/views/application/alex.jpg");
-    background-position: center center;
-    background-size: 100% 100%;
-}
-
-    </style>
-   <!-- Navigation -->
+   <!-- DASHBOARD -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
     <a class="navbar-brand" href="/" style="font-family:Didot, serif; font-size:20px; color:#FF0999;">A&M Crémerie</a>
@@ -33,24 +18,17 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/" style="font-family:courier; font-size:12px;">DASHBOARD<span class="sr-only"></span>
-              </a>
+          <a class="nav-link" href="/" style="font-family:courier; font-size:12px;">DASHBOARD<span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" style="font-family:courier; font-size:12px;">MY PROFILE</a>
         </li>
-       
       </ul>
     </div>
   </div>
 </nav>
-
-<!-- Navigation END -->
-
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-<!------ Include the above in your HEAD tag ---------->
 
 <!------ NAVIGATION BAR START ---------->
 <br><br>
@@ -63,8 +41,68 @@
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   <button class="button6"><%= link_to 'New Assignment', new_assignment_path%></button>
   </h1>
-  <!------ NAVIGATION BAR END ---------->
   
+<!------ SHOW ASSIGNMENT TABLE START ---------->
+<div class="container1">
+<font color="#00cca3"><h4 id="notice"><%= notice %></h4></font>
+<h2>
+<table class="table" cellspacing="5" width="50%" cellpadding="5" style="font-family:courier; font-size:22px;">
+<thead><p style="font-family:courier; font-size:22px;" align="center"><font color="turquoise"><strong>Assignment No. <%=@assignment.id%></strong></p>
+<thead align="right">
+<tr align="right">
+    <td>
+      Store ID:
+    </td>
+    <td align="left">
+      <%= @assignment.store_id %>
+    </td>
+<tr>
+  <td>
+    Employee ID:
+  </td>
+  <td align="left">
+    <%= @assignment.employee_id %>
+  </td>
+</tr>
+<tr>
+  <td>
+    Start Date:
+  </td>
+  <td align="left">
+    <%= @assignment.start_date %>
+  </td>
+</tr>
+<tr>
+  <td>
+    End Date:
+  </td>
+  <td align="left">
+    <%= @assignment.end_date %>
+  </td>
+</tr>
+<tr>
+  <td>
+    Pay Level:
+  </td>
+  <td align="left">
+    <%= @assignment.pay_level %>
+  </td>
+</tr>
+<tr>
+  <td>
+    <button class="button1"><%= link_to 'Back', assignments_path %>
+  </td>
+  <td align="left">
+    <button class="button1"><%= link_to 'Edit', edit_assignment_path(@assignment) %>
+  </td>
+</tr>
+</table>
+</h2>
+</div> 
+<br>
+<br>
+
+<!------ CSS STYLING FOR SHOW ASSIGNMENT ---------->
 <style>
 h3 {
     font-size: 1.5em;
@@ -227,82 +265,16 @@ a {
 a:hover {
   color: hotpink;
 }
-a1 {
-  color: blue;
-}
-a1:hover {
-  color: #FF0999;
-}
 body {
       background-color: #331a00;
   }
 </style>
-  
-<div class="container1">
-<font color="#00cca3"><h4 id="notice"><%= notice %></h4></font>
 
-<h2>
-<table class="table" cellspacing="5" width="50%" cellpadding="5" style="font-family:courier; font-size:22px;">
-<thead><p style="font-family:courier; font-size:22px;" align="center"><font color="turquoise"><strong>Assignment No. <%=@assignment.id%></strong></p>
-<thead align="right">
-<tr align="right">
-    <td>
-      Store ID:
-    </td>
-    <td align="left">
-      <%= @assignment.store_id %>
-    </td>
-<tr>
-  <td>
-    Employee ID:
-  </td>
-  <td align="left">
-    <%= @assignment.employee_id %>
-  </td>
-</tr>
-<tr>
-  <td>
-    Start Date:
-  </td>
-  <td align="left">
-    <%= @assignment.start_date %>
-  </td>
-</tr>
-<tr>
-  <td>
-    End Date:
-  </td>
-  <td align="left">
-    <%= @assignment.end_date %>
-  </td>
-</tr>
-<tr>
-  <td>
-    Pay Level:
-  </td>
-  <td align="left">
-    <%= @assignment.pay_level %>
-  </td>
-</tr>
-<tr>
-  <td>
-    <button class="button1"><%= link_to 'Back', assignments_path %>
-  </td>
-  <td align="left">
-    <button class="button1"><%= link_to 'Edit', edit_assignment_path(@assignment) %>
-  </td>
-</tr>
-</table>
-
-</h2>
-</div> 
-
-<br>
-<br>
+<!------ FOOTER ---------->
 <div class="container2">
 <div id="copyright" align="center"><font color="#FF0999">
   <br>
-  Webmaster: <a1 href= mail_to "lenal@andrew.cmu.edu">Lena Li </a1>Copyright © 2019
+  Webmaster: <a href= mail_to "lenal@andrew.cmu.edu">Lena Li</a> Copyright © 2019
   <br><br>
    ♡
   <br><br></font>
