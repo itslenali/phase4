@@ -1,10 +1,15 @@
 class Store < ApplicationRecord
 # Callbacks
   before_save :reformat_phone
+  before_destroy :is_destroyable?
+  after_rollback :convert_to_inactive
   
   # Relationships
   has_many :assignments
-  has_many :employees, through: :assignments  
+  has_many :employees, through: :assignments 
+  has_many :shifts, through: :assignments
+  has_many :store_flavors
+  has_many :flavors, through: :store_flavors
   
   # Validations
   # make sure required fields are present
@@ -37,6 +42,18 @@ class Store < ApplicationRecord
     phone.gsub!(/[^0-9]/,"") # strip all non-digits
     self.phone = phone       # reset self.phone to new string
   end
+  
+  def is_destroyable?
+    @destroyable = false
+  end
+  
+  def convert_to_inactive
+    self.update_attribute(:active, false) if !@destroyable.nil? && @destroyable == false
+    @destroyable = nil
+  end
 
+  
+  
 end
+
 

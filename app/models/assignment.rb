@@ -1,10 +1,19 @@
 class Assignment < ApplicationRecord
+  
+  
+#   Assignments (in addition to previous requirements) must:
+
 # Callbacks
   before_create :end_previous_assignment
+  before_update :remove_future_shifts
+  before_destroy :is_destroyable?
+  after_rollback :terminate_assignment
   
+# 1. have an appropriate relationship with new entities
   # Relationships
   belongs_to :employee
   belongs_to :store
+  has_many :shifts
   
   # Validations
   validates_numericality_of :pay_level, only_integer: true, greater_than: 0, less_than: 7
@@ -52,5 +61,27 @@ class Assignment < ApplicationRecord
       errors.add(:store_id, "is not an active store at the creamery")
     end
   end
+  
+  # 2. when assignments are terminated (end date set to now or in the past), any future/upcoming shifts associated with the assignment are deleted.
+
+# 3. may be terminated but never destroyed if there are shifts that have been worked during that assignment
+
+
+  def is_destroyable?
+    @destroyable = self.shifts.past.empty?
+  end
+  
+  def terminate_assignment
+    remove_future_shifts if @destroyable == false && !@destroyable.nil?
+    self.update_attribute(:end_date, Date.current)if @destroyable == false && !@destroyable.nil? 
+    @destroyable = nil
+  end
+  
+  def remove_future_shifts
+    @future_shifts = self.shifts.upcoming
+    @future_shifts.each {|s| s.destroy}
+  end
+  
 end
+
 
