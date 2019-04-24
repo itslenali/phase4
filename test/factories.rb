@@ -40,9 +40,10 @@ FactoryBot.define do
   
   factory :shift do
     association :assignment
+    association :employee
     date {Date.today}
-    start_time {Time.current}
-    end_time {"9:59".to_time}
+    start_time {Time.current.to_time}
+    end_time {nil}
     notes {"This shift experienced lots of customers"}
   end
   

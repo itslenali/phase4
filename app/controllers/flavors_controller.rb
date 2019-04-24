@@ -1,10 +1,14 @@
 class FlavorsController < ApplicationController
+
   before_action :set_flavor, only: [:show, :edit, :update, :destroy]
 
   # GET /flavors
   # GET /flavors.json
   def index
     @flavors = Flavor.all
+    @inactive_flavors = Flavor.inactive
+    @active_flavors = Flavor.active
+    @store_flavors = Store.all
   end
 
   # GET /flavors/1

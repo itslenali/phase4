@@ -1,0 +1,25 @@
+<div class = "row">
+		
+	<br/>
+	<h2>New Shifts</h2>	
+	<br/>
+	
+
+	<div class = "small-8 small-offset-5 columns">
+	 	<div class="form-actions">
+	 		<div id = "new-shift-button">
+			  	<%= link_to(new_shift_path(store_id: params[:store_id]), id: 'new_shift_link', class: 'button radius', remote:true) do %>
+			  	&nbsp;ADD<br/>
+			  	SHIFT
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+
+
+<div class = "small-12 columns">
+	<br/>
+	<%= render partial: "list_new_shifts", locals: {store: @store, shifts: @new_shifts}  %>
+</div>
+</div>

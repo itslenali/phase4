@@ -6,7 +6,7 @@ class Assignment < ApplicationRecord
 # Callbacks
   before_create :end_previous_assignment
   before_update :remove_future_shifts
-  before_destroy :is_destroyable?
+  before_destroy :destroyable?
   after_rollback :terminate_assignment
   
 # 1. have an appropriate relationship with new entities
@@ -66,15 +66,16 @@ class Assignment < ApplicationRecord
 
 # 3. may be terminated but never destroyed if there are shifts that have been worked during that assignment
 
-
-  def is_destroyable?
+  public
+  
+  def destroyable?
     @destroyable = self.shifts.past.empty?
   end
   
   def terminate_assignment
-    remove_future_shifts if @destroyable == false && !@destroyable.nil?
-    self.update_attribute(:end_date, Date.current)if @destroyable == false && !@destroyable.nil? 
-    @destroyable = nil
+    remove_future_shifts if @destroyable == false
+    self.update_attribute(:end_date, Date.current) if @destroyable == false
+    return "Removed successfully"
   end
   
   def remove_future_shifts

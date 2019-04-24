@@ -1,0 +1,13 @@
+  <p><b>Description</b><br/>
+  <%= @job.description %></p>
+
+
+<% if logged_in? %>
+	  <p><b>Active</b><br/> 
+	  <%= @job.active ? "Yes" : "No" %></p>
+<%end%>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

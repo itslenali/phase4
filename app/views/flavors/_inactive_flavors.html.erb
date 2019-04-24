@@ -1,0 +1,28 @@
+
+
+<!------inactive flavors START ---------->
+
+<h3>
+<p id="notice"><%= notice %></p>
+<table id="dt-select" class="table" cellspacing="5" cellpadding="5" style="font-family:courier; font-size:12px;">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Active</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inactive_flavors.each do |flavor| %>
+      <tr>
+        <td><%= flavor.name %></td>
+        <td><%= flavor.active %></td>
+        <td><button class="button1"><%= link_to 'Show', flavor %></td>
+        <td><button class="button2"><%= link_to 'Edit', edit_flavor_path(flavor) %></td>
+        <td><button class="button3"><%= link_to 'Destroy', flavor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</h3>

@@ -46,6 +46,9 @@ class FlavorTest < ActiveSupport::TestCase
 
     should "make a flavor inactive" do
       assert_equal "Changed to inactive", @chocolate.convert_inactive
+ 
     end
   end
+
+
 end

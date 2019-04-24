@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <%= stylesheet_link_tag "/app/assets/stylesheets/application" %>
+
+  <header>
+   <% if logged_in? %>
+    <% if current_user.employee.role== "employee" %>
+      <%= render :partial => "partials/employee_header" %>
+    <% elsif current_user.employee.role== "manager" %>
+      <%= render :partial => "partials/manager_nav" %>
+    <% elsif current_user.employee.role== "admin" %>
+      <%= render :partial => "partials/admin_nav" %>
+    <%end%> 
+    
+  <% else %>
+    <%= render :partial => "partials/general_header" %>
+  <%end%> 
+        <%= yield %>
+  </header>
+    
+
+    <footer>
+      <div class="container2" id="footer">
+        <%= render partial: 'partials/footer' %>
+      </div>
+    </footer> 
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

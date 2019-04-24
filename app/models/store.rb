@@ -1,8 +1,8 @@
 class Store < ApplicationRecord
 # Callbacks
   before_save :reformat_phone
-  before_destroy :is_destroyable?
-  after_rollback :convert_to_inactive
+  before_destroy :destroyable?
+  after_rollback :convert_inactive
   
   # Relationships
   has_many :assignments
@@ -43,13 +43,15 @@ class Store < ApplicationRecord
     self.phone = phone       # reset self.phone to new string
   end
   
-  def is_destroyable?
+  public
+  def destroyable?
     @destroyable = false
   end
   
-  def convert_to_inactive
+  def convert_inactive
     self.update_attribute(:active, false) if !@destroyable.nil? && @destroyable == false
     @destroyable = nil
+    return "Changed store to inactive"
   end
 
   

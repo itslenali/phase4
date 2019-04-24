@@ -18,8 +18,6 @@ class Flavor < ApplicationRecord
   before_destroy :destroyable?
   after_rollback :convert_inactive
 
-# helper functions for destroy
-
 #  private
   def destroyable?
     @destroyable = false

@@ -121,5 +121,9 @@ class AssignmentTest < ActiveSupport::TestCase
       assert_equal 1.day.ago.to_date, @kathryn.assignments.first.end_date
       @promote_kathryn.destroy
     end
+    
+    should "terminate an assignment" do
+      assert_equal "Removed successfully", @assign_ed.terminate_assignment
+    end
   end
 end

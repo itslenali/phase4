@@ -1,0 +1,54 @@
+<br/>
+<h2><%= @employee.proper_name %></h2>
+<br/>
+
+<div class="row">
+
+  <div class="small-6 columns">
+
+
+		<p><b>Email:</b>
+		 <%= @employee.user.email unless @employee.user.nil? %></p>
+
+		<p><b>Phone:</b>
+		<%= number_to_phone @employee.phone unless @employee.phone.nil? %></p>
+
+		<p><b>Date of Birth:</b>
+		<%= @employee.date_of_birth.strftime("%m/%d/%y") %></p>
+
+		<p><b>SSN:</b>
+		<%= @employee.ssn %></p>
+
+		<p><b>Role:</b>
+		<%= @employee.role.capitalize %></p>
+
+		<p><b>Active:</b>
+		<%= @employee.active ? "Yes" : "No" %></p>
+
+		<div id = "edit-button">
+			<%= link_to(edit_employee_path(@employee), class: 'button radius') do %>
+	        &nbsp;<%= "EDIT" %>
+	    	<% end %>
+    	</div>
+
+	</div>
+
+<% unless logged_in? and current_user.role? :admin %>
+  <div class="small-6 columns">
+      <h4>CURRENT ASSIGNMENT</h4>
+
+		<p><b>Store:</b> <%= @current_assgn.store.name %><br/>
+
+		<b>Role:</b> <%= @employee.role.capitalize %><br/>
+
+		<b>Pay Level:</b> <%= @current_assgn.pay_level %><br/>
+
+		<b>Start Date:</b> <%= @current_assgn.start_date.strftime("%m/%d/%y") %></p>
+	</div>
+
+  <div class="small-6 columns">
+	<%= render partial: "employees/assignment_history"  %>
+  </div>
+<% end %>
+
+</div>

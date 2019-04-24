@@ -1,0 +1,167 @@
+@import "materialize";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+.ui-datepicker OPTGROUP { font-weight:normal; }
+.ui-datepicker OPTGROUP OPTION { display:none; text-align:right; }
+.ui-datepicker OPTGROUP:hover OPTION { display:block; }
+
+#toast-container { left:1%;
+right: auto !important;
+}
+
+  h2 {
+    font-size: 1.5em;
+    background-color: #FFFF;
+    outline: 1px solid #FF0999;
+    margin: 50px;
+    padding: 20px;
+    margin-right: 200px;
+    margin-left: 200px;
+}
+h1 {
+    font-size: 1.5em;
+    font-family: garamond;
+    outline: 5px dotted #FF0999;
+    background-color: #ffe6f7;
+    margin: 30px;
+    padding: 30px;
+}
+h4 {
+    font-size: 1.5em;
+    font-family: courier;
+    outline: none;
+    background-color: #FFFF;
+    margin: 100px;
+    padding: 0px;
+}
+th, td {
+  border-bottom: 0.5px solid #ddd;
+}
+tr:hover {
+  background-color: #ffdccc;
+  
+}
+.container1 {
+    font-size: 1.5em;
+    font-family: garamond;
+    outline: 5px dotted #FF0999;
+    background-color: #b3ffe6;
+    margin: 30px;
+    padding: 30px;
+    background-image: url("https://thumbor.thedailymeal.com/RoYw2N8pB2eC26GdSOjjKs8h-NE=//https://www.thedailymeal.com/sites/default/files/2018/05/29/iStock-669243898.jpg");
+    height: 70%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container2 {
+    font-size: 1em;
+    font-family: courier;
+    outline: 2px solid #FF0999;
+    background-color: #FFF;
+    margin: 0px;
+    padding: 0px;
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:70px;
+    width:100%;
+}
+.button1 {
+  background-color: #ff8080;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 32px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button1:hover {
+  background-color: blue;
+}
+.button2 {
+  background-color: #ccccff;
+  border: 10px;
+  color: white;
+  margin: 5px;
+  padding: 2px 45px;
+  text-align: center;
+  font-size: 32px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+.button2:hover {
+  background-color: blue;
+}
+.button3 {
+  background-color: #ffdd99;
+  border: 10px;
+  color: white;
+  margin: 5px;
+  padding: 2px 75px;
+  text-align: center;
+  font-size: 32px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+.button3:hover {
+  background-color: blue;
+}
+.button4 {
+  background-color: lightpink;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button4:hover {
+  background-color: blue;
+}
+.button5 {
+  background-color: #FF0999;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button5:hover {
+  background-color: blue;
+}
+.button6 {
+  background-color: violet;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button6:hover {
+  background-color: yellow;
+}
+a {
+  color: black;
+}
+a:hover {
+  color: hotpink;
+}
+body {
+  background-color: #331a00;
+
+}

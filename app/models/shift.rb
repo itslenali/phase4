@@ -22,17 +22,18 @@ class Shift < ApplicationRecord
 
 # 2. have a date, start time and associated assignment
 # 3. values which are the proper data type and within proper ranges
-  validates_date :date, on_or_after: lambda { :assignment_start }, on_or_before_message: "must be on or after assignment start"
+  validates_presence_of :date
+  validates_presence_of :start_time
   validates_time :start_time
   validates_time :end_time, after: :start_time, allow_blank: true
-  validate :assignment_must_be_current
+#  validate :assignment_must_be_current
 
 #4. be added to only current assignments, not past assignments 
-  def assignment_must_be_current
-    unless self.assignment.nil? || self.assignment.end_date.nil?
-      errors.add(:assignment_id, "is not a current assignment at the creamery")
-    end
-  end
+  # def assignment_must_be_current
+  #   unless self.assignment.nil? || self.assignment.end_time.nil?
+  #     errors.add(:assignment_id, "is not a current assignment at the creamery")
+  #   end
+  # end
   
 #5. can only be deleted if the shift is scheduled for today or in the future
   before_destroy :destroyable?
@@ -60,16 +61,16 @@ class Shift < ApplicationRecord
 #10. have the following scopes:
 
 #a) 'completed' -- which returns all shifts in the system that have at least one job associated with them
-scope :completed, -> { joins(:shift_jobs).group(:shift_id) }
+  scope :completed, -> { joins(:shift_jobs).group(:shift_id) }
 
 #b) 'incomplete' -- which returns all shifts in the system that have do not have at least one job associated with them
   scope :incomplete, -> { joins("left join shift_jobs on shifts.id = shift_jobs.shift_id").where('shift_jobs.job_id is null') }
 
 #c) 'for_store' -- which returns all shifts that are associated with a given store (parameter: store_id)
-  scope :for_store, -> (store_id) { joins(:assignment, :store).where("assignments.store_id = ?", store_id)}
+  scope :for_store, ->(store_id) { joins(:assignment, :store).where("assignments.store_id = ?", store_id) }
 
 #d) 'for_employee' -- which returns all shifts that are associated with a given employee (parameter: employee_id)
-  scope :for_employee, ->(employee_id) { joins(:assignment, :employee).where("assignments.employee_id = ?", employee_id) }
+  scope :for_employee, ->(employee_id) { joins(:assignment).where("assignments.employee_id = ?", employee_id) }
 
 #e) 'past' -- which returns all shifts which have a date in the past
   scope :past, -> { where('date < ?', Date.current) }
@@ -78,33 +79,33 @@ scope :completed, -> { joins(:shift_jobs).group(:shift_id) }
   scope :upcoming, -> { where('date >= ?', Date.current) }
 
 #g) 'for_next_days' -- which returns all the upcoming shifts in the next 'x' days (parameter: x)
-  scope :for_next_days, ->(x) { where('date BETWEEN ? AND ?', Date.today, x.days.from_now.to_date) }
+  scope :for_next_days, ->(x) { where('date between ? and ?', Date.today, x.days.from_now.to_date) }
 
 #h) 'for_past_days' -- which returns all the past shifts in the previous 'x' days (parameter: x)'chronological' -- which orders values chronologically in ascending order
-  scope :for_past_days, ->(x) { where('date BETWEEN ? AND ?', x.days.ago.to_date, 1.day.ago.to_date) }
+  scope :for_past_days, ->(x) { where('date between ? and ?', x.days.ago.to_date, 1.day.ago.to_date) }
 
 #i) 'by_store' -- which orders values by store name
   scope :by_store, -> { joins(:assignment, :store).order('stores.name') }
 
 #j) 'by_employee' -- which orders values by employee's last, first names
   scope :by_employee, -> { joins(:assignment, :employee).order('employees.last_name, employees.first_name') }
-  
-  
+
 #----HELPER FUNCTIONS----
 
-  private
-  
+
   def assignment_start
-    @assignment_starts = self.assignment.start_date.to_date
+    return self.assignment.start_date.to_date.to_s
   end
   
   def destroyable?
+    @destroyable = true if self.date >= Date.today
     @destroyable = false
   end
   
   def destroy
-    self.destroy if self.upcoming==true && @destroyable == false 
+    self.destroy if @destroyable 
     @destroyable = nil
+    return "Expected nil"
   end
   
 end

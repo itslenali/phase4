@@ -36,6 +36,15 @@ class JobTest < ActiveSupport::TestCase
     should "be in alphabetical order" do
       assert_equal ["Baking", "Dishwashing", "Mopping", "Scooping ice cream", "Washing Ice Cream Counters"], Job.alphabetical.map{|job| job.name}
     end
-  end
+  
+  # 4) not be able to destroy
+    should "not be able to destroy jobs" do
+      assert_equal true, @scoop_icecream.destroyable?
+ 
+    end
 
+    should "make a job inactive" do
+      assert_equal "Changed to inactive", @scoop_icecream.convert_inactive
+    end
+  end
 end

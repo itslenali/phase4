@@ -83,6 +83,10 @@ class StoreTest < ActiveSupport::TestCase
       assert_equal 1, Store.inactive.size
       assert_equal ["Hazelwood"], Store.inactive.alphabetical.map{|s| s.name}
     end
+    
+    should "make a store inactive" do
+      assert_equal "Changed store to inactive", @cmu.convert_inactive
+    end
   
   end
 end

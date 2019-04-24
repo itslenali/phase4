@@ -19,21 +19,20 @@ class Job < ApplicationRecord
     scope :alphabetical, -> { order('name') }
 
 #4. can only be deleted if the job has never been worked by an employee; otherwise it is made inactive
-  before_destroy :is_destroyable?
+  before_destroy :destroyable?
   after_rollback :convert_inactive
 
 
 #-----HELPER FUNCTIONS-----
 
-  private
-  
-  def is_destroyable?
+  def destroyable?
     @destroyable = self.shift_jobs.empty?
   end
   
   def convert_inactive
     self.update_attribute(:active, false) if !@destroyable.nil? && @destroyable == false
     @destroyable = nil
+    return "Changed to inactive"
   end
 
 end
