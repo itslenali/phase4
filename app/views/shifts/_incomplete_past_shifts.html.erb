@@ -1,10 +1,10 @@
-
-<% if @completed_shifts.empty? %>
-  <p><em>There are no completed shifts at this time.</em></p>
+<% if @past_shifts_completed.empty? %>
+  <p><em>There are no incomplete past shifts at this time.</em></p>
 <% else %>
   <br/>
 
-<!------incomplete shifts START ---------->
+<!------incomplete past shifts START ---------->
+<h1>INCOMPLETE PAST SHIFTS</h1>
 <h3>
 <p id="notice"><%= notice %></p>
 <table id="dt-select" class="table" cellspacing="5" cellpadding="5" style="font-family:courier; font-size:12px;">
@@ -20,7 +20,7 @@
   </thead>
 
   <tbody>
-    <% @completed_shifts.each do |shift| %>
+    <% @past_shifts_incomplete.each do |shift| %>
       <tr>
         <td><%= link_to shift.assignment.employee.proper_name, employee_path(shift.assignment.employee) %></td>
         <td><%= link_to shift.assignment.store.name, store_path(shift.assignment.store) %></td>

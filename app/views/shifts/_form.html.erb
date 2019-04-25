@@ -1,3 +1,4 @@
+<% if logged_in? and !current_user.role? :employee %>
 
 <!------ SHIFT FORM ERRORS  ---------->
 <div class="container1">
@@ -69,6 +70,7 @@
 <% end %>
 </div>
 <br><br>
+<%end%>
 
 <!------ CSS STYLING FOR EMPLOYEES FORM ---------->
 <style>

@@ -55,10 +55,6 @@ class StoreFlavorsController < ApplicationController
   # DELETE /store_flavors/1.json
   def destroy
     @store_flavor.destroy
-    respond_to do |format|
-      format.html { redirect_to store_flavors_url, notice: 'Store flavor was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private

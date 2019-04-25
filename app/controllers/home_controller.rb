@@ -1,5 +1,7 @@
 class HomeController < ApplicationController  
 
+#credits to Github Divya for some aspects of code
+#https://github.com/divya/
 
   def home
     @active_stores = Store.active
@@ -17,19 +19,20 @@ class HomeController < ApplicationController
   
   #code credits: github.com/xxxxx
 
-  def dashboard
-    unless current_user.employee.role? :admin
+  def manager_home
+    if current_user.employee.role != :employee
       @employee = current_user.employee
-      @store =  Assignment.current.for_employee(current_user.employee_id).first.store
-      @store_flavors = @store.store_flavors
-      @today_shifts = Shift.for_store(@store).for_next_days(0).chronological.paginate(page: params[:today_shifts]).per_page(5)
-      @assignments = Assignment.current.for_store(@store).by_employee.paginate(page: params[:assignments]).per_page(5)
+    	@store =  Assignment.current.for_employee(current_user.employee_id).for_store(1)
+      @store_flavors = StoreFlavor.all
+      @today_shifts = Shift.for_store(1).for_next_days(0)
+      @assignments = Assignment.for_store(1).chronological
+
     end
   end
 
   def manage_shifts
-    @store =  Assignment.current.for_employee(current_user.employee_id).first.store 
-    @today_shifts = Shift.for_store(@store).for_next_days(0).chronological.paginate(page: params[:today_shifts]).per_page(5)
+    @store =  Assignment.current.for_employee(current_user.employee_id)
+    @today_shifts = Shift.for_store(1).for_next_days(0)
   end
 
   def employee_profile
@@ -67,7 +70,6 @@ class HomeController < ApplicationController
 
   def employee_shifts
     @employee = current_user.employee
-    @today_shifts = Shift.for_employee(@employee).for_next_days(0).paginate(page: params[:today_shifts]).per_page(5) 
     @upcoming_shifts = Shift.for_employee(@employee).for_next_days(14).paginate(page: params[:upcoming_shifts]).per_page(5)
     @past_shifts = Shift.for_employee(@employee).past.paginate(page: params[:past_shifts]).per_page(5)
   end

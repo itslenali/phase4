@@ -34,15 +34,11 @@ Rails.application.routes.draw do
    get 'home/account' => 'home#account', :as => :account
 
    
-   
-   
-   
-   
   get 'about' => 'home#about', as: :about
   get 'contact' => 'home#contact', as: :contact
   get 'privacy' => 'home#privacy', as: :privacy
 
-  get 'home/dashboard' => 'home#dashboard', :as => :dashboard
+  get 'home/manager_home' => 'home#manager_home', :as => :manager_home
   get 'home/past_shifts' => 'home#past_shifts', :as => :past_shifts
   get 'home/future_shifts' => 'home#future_shifts', :as => :future_shifts
   get 'home/employee_shifts' => 'home#employee_shifts', :as => :employee_shifts

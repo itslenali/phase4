@@ -1,64 +1,32 @@
-<!------ SHOW SHIFT TABLE START ---------->
-<div class="container1">
-<font color="#00cca3"><h4 id="notice"><%= notice %></h4></font>
-<h2>
-<table class="table" cellspacing="5" width="50%" cellpadding="5" style="font-family:courier; font-size:22px;">
-<thead><p style="font-family:courier; font-size:22px;" align="center"><font color="turquoise"><strong>Shift No. <%=@shift.id%></strong></p>
+
+<!------ SHIFT FORM TABLE  ---------->
+<table class="table" cellspacing="5" width="50%" cellpadding="5" style="font-family:courier; font-size:12px;">
+<thead><p style="font-family:courier; font-size:18px;" align="left"><strong>Enter number of days</strong></p>
 <thead align="right">
 <tr align="right">
-    <td>
-      Assignment:
-    </td>
-    <td align="left">
-      <%= @shift.assignment_id %>
-    </td>
 <tr>
   <td>
-    Date:
-  </td>
-  <td align="left">
-    <%= @shift.date %>
+    <div class="field">
+    <%= form.label :x_days %>
+
+    </div>
   </td>
 </tr>
-<tr>
+<tr bgcolor="#008000">
   <td>
-    Start Time:
-  </td>
-  <td align="left">
-    <%= @shift.start_time %>
-  </td>
-</tr>
-<tr>
-  <td>
-    End Time:
-  </td>
-  <td align="left">
-    <%= @shift.end_time %>
-  </td>
-</tr>
-<tr>
-  <td>
-    Notes:
-  </td>
-  <td align="left">
-    <%= @shift.notes %>
-  </td>
-</tr>
-<tr>
-  <td>
-    <button class="button1"><%= link_to 'Back', shifts_path %>
-  </td>
-  <td align="left">
-    <button class="button1"><%= link_to 'Edit', edit_shift_path(@shift) %>
+    <div class="actions">
+    <%= form.button :submit %>
+    </div>
   </td>
 </tr>
 </table>
-</h2>
-</div> 
-<br>
-<br>
 
-<!------ CSS STYLING FOR SHOW ASSIGNMENT ---------->
+</h2>
+<% end %>
+</div>
+<br><br>
+
+<!------ CSS STYLING FOR EMPLOYEES FORM ---------->
 <style>
 h3 {
     font-size: 1.5em;
@@ -86,7 +54,7 @@ h1 {
 }
 h4 {
     font-size: 1.5em;
-    font-family: courier;
+    font-family: garamond;
     outline: none;
     background-color: #FFFF;
     margin: 100px;
@@ -95,14 +63,14 @@ h4 {
 .container1 {
     font-size: 1.5em;
     font-family: garamond;
-    outline: 5px dotted #FF0999;
+    outline: 2px dashed blue;
     background-color: #FFFF;
     margin: 30px;
     padding: 30px;
-    background-image: url("https://images.unsplash.com/photo-1510148199876-8a856ee41d42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
-    height: auto;
+    background-image: url("https://images.unsplash.com/photo-1512223792601-592a9809eed4?ixlib=rb-1.2.1&auto=format&fit=crop&w=608&q=80");
+    height: auto; 
     background-position: center;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-size: cover;
 }
 .container2 {
@@ -201,8 +169,8 @@ tr:hover {
   background-color: blue;
 }
 .button6 {
-  background-color: violet;
-  border: 0px;
+  background-color: #f9d2f9;
+  border: 10px solid blue;
   color: white;
   margin: 3px;
   padding: 10px 50px;
@@ -213,7 +181,7 @@ tr:hover {
 }
 
 .button6:hover {
-  background-color: yellow;
+  background-color: #f9d2f9;
 }
 a {
   color: black;
@@ -226,3 +194,5 @@ body {
   }
 </style>
 
+
+</html>

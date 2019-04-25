@@ -18,11 +18,11 @@ class Assignment < ApplicationRecord
   # Validations
   validates_numericality_of :pay_level, only_integer: true, greater_than: 0, less_than: 7
   validates_date :start_date, on_or_before: lambda { Date.current }, on_or_before_message: "cannot be in the future"
-  validates_date :end_date, after: :start_date, on_or_before: lambda { Date.current }, allow_blank: true
+  validates_date :end_date, after: :start_date
   validate :employee_is_active_in_system, on: :create
   validate :store_is_active_in_system, on: :create
   validates_presence_of :employee_id, on: :update
-  validates_presence_of :store_id, on: :update
+  validates_presence_of :store_id, on: :create
   
   # Scopes
   scope :current,       -> { where(end_date: nil) }

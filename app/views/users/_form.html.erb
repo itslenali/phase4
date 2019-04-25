@@ -1,15 +1,217 @@
 
+<!------ USER FORM ERRORS  ---------->
+<div class="container1">
 <%= simple_form_for(@user) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <%= f.error_notification %>
+      <h1 style="font-family:courier; font-size:12px;"><font color="red"><%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %></h1>
 
-  <div class="form-inputs">
-    <%= f.input :email %>
-    <%= f.input :password_digest %>
-    <%= f.input :employee_id %>
-  </div>
-
-  <div class="form-actions">
+<!------ NEW USER FORM TABLE  ---------->
+<h3>
+<table class="table" cellspacing="5" width="50%" cellpadding="5" style="font-family:courier; font-size:12px;">
+<thead><p style="font-family:courier; font-size:18px;" align="left"><strong>New A&M User™ Information</strong></p>
+<thead align="right">
+<tr align="right">
+    <td>
+      <div class="field">
+        <%= f.input :email %>
+      </div>
+    </td>
+</tr>
+<tr>
+  <td>
+       <div class="field">
+         <%= f.input :password_digest %>
+       </div>
+  </td>
+</tr>
+<tr>
+  <td>
+       <div class="field">
+         <%= f.input :employee_id %>
+       </div>
+  </td>
+</tr>
+<tr bgcolor="#008000">
+  <td>
+    <div class="actions">
     <%= f.button :submit %>
-  </div>
+    </div>
+  </td>
+</tr>
+</table>
 <% end %>
+
+</h3>
+</div>
+<br><br>
+
+<!------ CSS STYLING FOR EMPLOYEES FORM ---------->
+<style>
+h3 {
+    font-size: 1.5em;
+    background-color: #FFFF;
+    outline: 1px solid #FF0999;
+    margin: 200px;
+    padding: 0px;
+}
+  h2 {
+    font-size: 1.5em;
+    background-color: #FFFF;
+    outline: 1px solid #FF0999;
+    margin: 100px;
+    padding: 20px;
+    margin-right: 300px;
+    margin-left: 300px;
+}
+h1 {
+    font-size: 1.5em;
+    font-family: garamond;
+    outline: 5px dotted #FF0999;
+    background-color: #FFFF;
+    margin: 30px;
+    padding: 30px;
+}
+h4 {
+    font-size: 1.5em;
+    font-family: garamond;
+    outline: none;
+    background-color: #FFFF;
+    margin: 100px;
+    padding: 0px;
+}
+.container1 {
+    font-size: 1.5em;
+    font-family: garamond;
+    outline: 2px dashed blue;
+    background-color: #FFFF;
+    margin: 30px;
+    padding: 30px;
+    background-image: url("https://images.unsplash.com/photo-1512223792601-592a9809eed4?ixlib=rb-1.2.1&auto=format&fit=crop&w=608&q=80");
+    height: auto; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container2 {
+    font-size: 1em;
+    font-family: courier;
+    outline: 2px solid #FF0999;
+    background-color: #FFF;
+    margin: 0px;
+    padding: 0px;
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:70px;
+    width:100%;
+}
+th, td {
+  border-bottom: 0.5px solid #ddd;
+}
+tr:hover {
+  background-color: #ffdccc;
+  
+}
+.button1 {
+  background-color: #b3fff0;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button1:hover {
+  background-color: blue;
+}
+.button2 {
+  background-color: #ff9666;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button2:hover {
+  background-color: blue;
+}
+.button3 {
+  background-color: #ffcc00;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button3:hover {
+  background-color: blue;
+}
+.button4 {
+  background-color: lightpink;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button4:hover {
+  background-color: blue;
+}
+.button5 {
+  background-color: #FF0999;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button5:hover {
+  background-color: blue;
+}
+.button6 {
+  background-color: #f9d2f9;
+  border: 10px solid blue;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button6:hover {
+  background-color: #f9d2f9;
+}
+a {
+  color: black;
+}
+a:hover {
+  color: hotpink;
+}
+body {
+      background-color: #331a00;
+  }
+</style>
+
+
+</html>

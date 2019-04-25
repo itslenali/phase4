@@ -5,6 +5,14 @@ class ShiftsController < ApplicationController
   # GET /shifts.json
   def index
     @shifts = Shift.all
+    @incomplete_shifts = Shift.incomplete
+    @completed_shifts = Shift.completed
+    @all_shifts = Shift.all
+    @past_shifts_completed = Shift.past.completed
+    @past_shifts_incomplete = Shift.past.incomplete
+    @upcoming_shifts = Shift.upcoming
+    @shifts_by_store = Shift.by_store
+    @shifts_by_employee = Shift.by_employee
   end
 
   # GET /shifts/1
@@ -16,6 +24,19 @@ class ShiftsController < ApplicationController
   def new
     @shift = Shift.new
   end
+  
+  # def for_next_days
+  #   @for_next_days = Shift.for_next_days(day_params)
+  #     respond_to do |format|
+  #       if @for_next_days.save
+  #           format.html { redirect_to @for_next_days, notice: 'Success' }
+  #           format.json { render :for_next_days_show, status: :created, location: @for_next_days }
+  #       else
+  #         format.html { render :new }
+  #         format.json { render json: @shift.errors, status: :unprocessable_entity }
+  #       end
+  #     end
+  # end
 
   # GET /shifts/1/edit
   def edit
@@ -71,4 +92,6 @@ class ShiftsController < ApplicationController
     def shift_params
       params.require(:shift).permit(:assignment_id, :date, :start_time, :end_time, :notes)
     end
+    
+    
 end

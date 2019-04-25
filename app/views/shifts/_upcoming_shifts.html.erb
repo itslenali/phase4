@@ -1,8 +1,9 @@
 
-<% if @completed_shifts.empty? %>
-  <p><em>There are no completed shifts at this time.</em></p>
+<% if @upcoming_shifts.empty? %>
+  <p><em>There are no upcoming shifts at this time.</em></p>
 <% else %>
   <br/>
+  <h2>Upcoming Shifts</h2>
 
 <!------incomplete shifts START ---------->
 <h3>
@@ -20,7 +21,7 @@
   </thead>
 
   <tbody>
-    <% @completed_shifts.each do |shift| %>
+    <% @upcoming_shifts.each do |shift| %>
       <tr>
         <td><%= link_to shift.assignment.employee.proper_name, employee_path(shift.assignment.employee) %></td>
         <td><%= link_to shift.assignment.store.name, store_path(shift.assignment.store) %></td>

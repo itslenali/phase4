@@ -5,9 +5,10 @@
 	<h1>Today's Shifts</h1>
 	
 		<% unless @today_shifts.nil? or @today_shifts.empty? %>
+		<h3>
 			<table id="dt-select" class="table" cellspacing="5" cellpadding="5" style="font-family:courier; font-size:12px;">
 			    <thead>
-			      <tr align="center">
+			      <tr>
 			        <th>Date</th>
 			        <th>Start Time</th>
 			        <th>End Time</th>
@@ -36,6 +37,7 @@
 			      <% end %>
 			    </tbody>
 		  </table>
+		  </h3>
 	  <%= will_paginate @today_shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next", param_name: "today_shifts" %>  
 
 	  <% else %>
@@ -71,17 +73,15 @@
 		          <td><%= shift.end_time.localtime.strftime("%I:%M %p") %></td>
 		          <% if shift.completed? %>
 			          <td>
-			          	<div id = "view-jobs-button">
+			          	<button class="button1">
 			            <%= link_to(shift_path(shift), class: 'button tiny radius warning') do %>
-			              &nbsp;View Jobs&nbsp;
+			              &nbsp;View Shift&nbsp;
 			            <% end %>
-			        	</div>
+			        	</button>
 	          		  </td>
 	          	  <% else %>
 	          	  	<td>&nbsp;</td>
           		  <% end %>
-
-
 		        </tr>
 		      <% end %>
 		    </tbody>
@@ -90,42 +90,50 @@
 	  <%= will_paginate @past_shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next", param_name: "past_shifts" %>  
 	 </div>
 
-	 <p>&nbsp;</p>
-
 
 	<div class="container1">
-	<h1>Upcoming Shifts</h1>
-	
-	<% if @upcoming_shifts.empty? %>
-	  	<h3>You have no upcoming shifts.<h3>
-	  <% end %>
+		<h1>Upcoming Shifts</h1>
 
-	  <h3>
+    <% if @upcoming_shifts.empty? %>
+	  	<h3>You have no past shifts.</h3>
+	  
+	  <% else %>
+	      <h3>
 		<table id="dt-select" class="table" cellspacing="5" cellpadding="5" style="font-family:courier; font-size:12px;">
 		    <thead>
 		      <tr>
 		        <th>Date</th>
 		        <th>Start Time</th>
 		        <th>End Time</th>
+		        <th>&nbsp;</th>
 		      </tr>
 		    </thead>
+		     <% end %>
 		    <tbody>
 		      <% @upcoming_shifts.each do |shift| %>
 		        <tr>
 		          <td><%= shift.date.strftime("%m/%d/%y") %></td>
 		          <td><%= shift.start_time.localtime.strftime("%I:%M %p") %></td>
 		          <td><%= shift.end_time.localtime.strftime("%I:%M %p") %></td>
+		          <% if shift.completed? %>
+			          <td>
+			          	<button class="button1">
+			            <%= link_to(shift_path(shift), class: 'button tiny radius warning') do %>
+			              &nbsp;View Shift&nbsp;
+			            <% end %>
+			        	</button>
+	          		  </td>
+	          	  <% else %>
+	          	  	<td>&nbsp;</td>
+          		  <% end %>
 		        </tr>
-		     <% end %>
+		      <% end %>
 		    </tbody>
-	  	</table>
-	  <%= will_paginate @upcoming_shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next", param_name: "upcoming_shifts" %>  
-	  </div>
-
-	
-	 </div></h3>
-
-<!------ CSS STYLING FOR EMPLOYEES INDEX ---------->
+	  </table>
+	  </h3>
+	  <%= will_paginate @upcoming_shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next", param_name: "past_shifts" %>  
+	 </div>
+<!------ CSS STYLING FOR EMPLOYEE INDEX ---------->
 <style>
   h3 {
     font-size: 1.5em;

@@ -1,0 +1,242 @@
+<div class="container1">
+<button class="button4"><%= link_to 'New Assignment', new_assignment_path %></button>
+
+<button class="button4"><%= link_to(new_store_flavor_path(store_id: 1)) do %>
+ Add New Flavor
+ <% end %> </button>
+ 
+<button class="button4"><%= link_to(new_shift_path(store_id: 1)) do %>New Shift<% end %> </button>
+
+
+<h1>Today's Shifts</h1>
+	<h3>
+		<% unless @today_shifts.nil? or @today_shifts.empty? %>
+			<table id="dt-select" class="table" cellspacing="5" cellpadding="5" style="font-family:courier; font-size:12px;">
+			    <thead>
+			      <tr>
+			        <th>Date</th>
+			        <th>Start Time</th>
+			        <th>End Time</th>
+			        <th></th>
+			        <th></th>
+			        <th></th>
+			        <th>&nbsp;</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <% @today_shifts.each do |shift| %>
+			        <tr>
+			          <td><%= shift.date.strftime("%m/%d/%y") %></td>
+			          <td><%= shift.start_time.localtime.strftime("%I:%M %p") %></td>
+			          <td><%= shift.end_time.localtime.strftime("%I:%M %p") %></td>
+				    <td><button class="button1"><%= link_to 'Show', shift %></td>
+        			<td><button class="button2"><%= link_to 'Edit', edit_shift_path(shift) %></td>
+        			<td><button class="button3"><%= link_to 'Destroy', shift, method: :destroy, data: { confirm: 'Are you sure?' } %></td>
+			        </tr>
+			      <% end %>
+			    </tbody>
+		  </table>
+		  </h3>
+	 <% else %>
+	  <h3>You have no shifts today.</h3>
+	  <% end %>
+
+	 
+<h1>Store Assignments</h1>
+
+	<% state = "current" %> 
+
+	<% if @assignments.empty? %>
+		 <h3>There are no <%= state %> assignments at this time.</h3>
+	<% else %>
+	<h3>
+		 <table id="dt-select" class="table" cellspacing="5" cellpadding="5" style="font-family:courier; font-size:12px;">
+		    <thead><p style="font-family:courier; font-size:12px;" align="center"><br>Ordered by most recent.</p>
+		      <tr>
+		        <th>Employee</th>
+		        <th>Phone</th>
+		        <th>Role</th>
+		        <th>Start Date</th>
+		        <th>End Date</th>
+		        <th></th>
+			        <th></th>
+			        <th></th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <% @assignments.each do |assignment| %>
+		        <tr>
+		          <td><%= link_to assignment.employee.name, employee_path(assignment.employee) %></td>
+		          <td><%= number_to_phone assignment.employee.phone unless assignment.employee.phone.nil?  %></td>
+		          <td><%= link_to assignment.employee.role, employee_path(assignment.employee)  %></td>
+		          <td><%= link_to assignment.start_date.strftime("%m/%d/%y") %></td>
+		           <td><%= link_to assignment.end_date.strftime("%m/%d/%y") %></td>
+		           <td><button class="button1"><%= link_to 'Show', assignment %></td>
+        			<td><button class="button2"><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
+        			<td><button class="button3"><%= link_to 'Destroy', edit_assignment_path(assignment) %></td>
+		        </tr>
+		      <% end %>
+		    </tbody>
+		  </table>
+		<% end %>
+</h3>
+
+<h1>Flavors Offered</h1>
+
+<%= render 'stores/list_of_flavors' %>
+
+</div>
+
+<p>&nbsp;</p>
+
+
+<!------ CSS STYLING FOR HOME PAGE ---------->
+<style>
+  h2 {
+    font-size: 1.5em;
+    background-color: #FFFF;
+    outline: 1px solid #FF0999;
+    margin: 50px;
+    padding: 20px;
+    margin-right: 200px;
+    margin-left: 200px;
+}
+h1 {
+    font-size: 1.5em;
+    font-family: garamond;
+    outline: 5px dotted #FF0999;
+    background-color: #ffe6f7;
+    margin: 30px;
+    padding: 30px;
+}
+h4 {
+    font-size: 1.5em;
+    font-family: courier;
+    outline: none;
+    background-color: #FFFF;
+    margin: 100px;
+    padding: 0px;
+}
+th, td {
+  border-bottom: 0.5px solid #ddd;
+}
+tr:hover {
+  background-color: #ffdccc;
+  
+}
+.container1 {
+    font-size: 1.5em;
+    font-family: garamond;
+    outline: 5px dotted #FF0999;
+    background-color: #b3ffe6;
+    margin: 30px;
+    padding: 30px;
+    background-image: url("https://thumbor.thedailymeal.com/RoYw2N8pB2eC26GdSOjjKs8h-NE=//https://www.thedailymeal.com/sites/default/files/2018/05/29/iStock-669243898.jpg");
+    height: 70%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container2 {
+    font-size: 1em;
+    font-family: courier;
+    outline: 2px solid #FF0999;
+    background-color: #FFF;
+    margin: 0px;
+    padding: 0px;
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:70px;
+    width:100%;
+}
+.button1:hover {
+  background-color: blue;
+}
+.button2 {
+  background-color: #ff9666;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button2:hover {
+  background-color: blue;
+}
+.button3 {
+  background-color: #ffcc00;
+  border: 10px;
+  color: white;
+  margin: 3px;
+  padding: 2px 25px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button3:hover {
+  background-color: blue;
+}
+.button4 {
+  background-color: lightpink;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+
+.button4:hover {
+  background-color: blue;
+}
+.button5 {
+  background-color: #FF0999;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button5:hover {
+  background-color: blue;
+}
+.button6 {
+  background-color: violet;
+  border: 0px;
+  color: white;
+  margin: 3px;
+  padding: 10px 50px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button6:hover {
+  background-color: yellow;
+}
+a {
+  color: black;
+}
+a:hover {
+  color: hotpink;
+}
+body {
+  background-color: #331a00;
+
+}
+</style>

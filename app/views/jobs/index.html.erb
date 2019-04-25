@@ -2,14 +2,33 @@
 
 <h1>Jobs</h1>
 
+<!------job ALL INDEX TABLE START ---------->
+<h2>
+<div class="dropdown">
+<button class="button5">Active Jobs</button>
+<div class="dropdown-content">
+<%=render partial: "active_jobs" %>
+</div>
+</div>
+
+<div class="dropdown">
+<button class="button5">Inactive Jobs</button>
+<div class="dropdown-content">
+<%=render partial: "inactive_jobs" %>
+</div>
+</div>
+
+
 <!------ JOB INDEX TABLE START ---------->
 <h3>
 <table id="dt-select" class="table" cellspacing="5" cellpadding="5" style="font-family:courier; font-size:12px;">
-  <thead>
+  <thead><br><p style="font-family:courier; font-size:12px;"  align="center">In alphabetical order.</p>
     <tr>
       <th>Name</th>
       <th>Description</th>
       <th>Active</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -21,7 +40,6 @@
         <td><%= job.active %></td>
         <td><button class="button1"><%= link_to 'Show', job %></td>
         <td><button class="button2"><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><button class="button3"><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,45 +47,71 @@
 </h3>
 <br><br>
 
-<!------ CSS STYLING FOR JOBS INDEX ---------->
 <style>
-body {
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+  body {
     background-color: #331a00;
-    background-image: url("https://images.unsplash.com/photo-1499287846893-3836a8142739?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1638&q=80");
-    height: auto; 
+    background-image: url("https://images.unsplash.com/photo-1549592406-df12b3464e78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60");
+    height: 100%; 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+      
   }
+  h3 {
+    font-size: 1.5em;
+    background-color: #FAFAFA;
+    outline: 5px solid #FF0999;
+    margin: 30px;
+    padding: 0px;
+}
 h1 {
     font-size: 1.5em;
     font-family: garamond;
     outline: 5px dotted #FF0999;
-    background-color: #FFFF;
+    background-color: #FAFAFA;
     margin: 30px;
     padding: 30px;
 }
 h2 {
     font-size: 1.5em;
     font-family: garamond;
-    outline: 5px dotted #FF0999;
-    background-color: #FFFF;
-    margin: 30px;
-    padding: 30px;
+    margin: 10px;
+    padding: 15px;
 }
-  h3 {
-    font-size: 1.5em;
-    background-color: #FFFF;
-    outline: 5px solid #FF0999;
-    margin: 30px;
-    padding: 0px;
-}
-
 th, td {
   border-bottom: 0.5px solid #ddd;
 }
 tr:hover {
   background-color: #ffdccc;
+  
 }
 .button1 {
   background-color: #b3fff0;
@@ -80,6 +124,7 @@ tr:hover {
   cursor: pointer;
   border-radius: 12px;
 }
+
 .button1:hover {
   background-color: blue;
 }
@@ -154,7 +199,6 @@ tr:hover {
   cursor: pointer;
   border-radius: 12px;
 }
-
 .button6:hover {
   background-color: yellow;
 }
@@ -177,8 +221,5 @@ a:hover {
     height:70px;
     width:100%;
 }
-</style> 
-
-
-</html>
+</style>
 

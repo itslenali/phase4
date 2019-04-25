@@ -1,10 +1,9 @@
+<h1>All Shifts</h1>
+<!------shifts START ---------->
 
-<% if @completed_shifts.empty? %>
-  <p><em>There are no completed shifts at this time.</em></p>
-<% else %>
-  <br/>
-
-<!------incomplete shifts START ---------->
+<% if @shifts.empty? %>
+		 <h3>There are no <%= state %> shifts at this time.</h3>
+	<% else %>
 <h3>
 <p id="notice"><%= notice %></p>
 <table id="dt-select" class="table" cellspacing="5" cellpadding="5" style="font-family:courier; font-size:12px;">
@@ -20,7 +19,7 @@
   </thead>
 
   <tbody>
-    <% @completed_shifts.each do |shift| %>
+    <% @shifts.each do |shift| %>
       <tr>
         <td><%= link_to shift.assignment.employee.proper_name, employee_path(shift.assignment.employee) %></td>
         <td><%= link_to shift.assignment.store.name, store_path(shift.assignment.store) %></td>
@@ -32,7 +31,7 @@
         <td><button class="button3"><%= link_to 'Destroy', shift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-<%end%>
   </tbody>
 </table>
+	<% end %>
 </h3>

@@ -1,4 +1,9 @@
-<% if logged_in? and current_user.role? :admin %>
+<% if logged_in? and current_user.role? :employee %>
+
+
+<%= render partial: "all_flavors" %>
+
+<% elsif logged_in? and current_user.role? :admin %>
 <!------FLAVORS ALL INDEX TABLE START ---------->
 <h2>
 <div class="dropdown">
@@ -16,7 +21,6 @@
 </div>
 
 
-<%= render partial: "all_flavors" %>
 	<%end%>
 </h2>
 </h3>

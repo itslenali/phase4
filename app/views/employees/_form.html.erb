@@ -32,7 +32,9 @@
 <tr>
   <td>
        <div class="input-field">
+         <% if current_user.employee.role != :employee %>
          <%= f.input :ssn %>
+         <%end%>
        </div>
   </td>
 </tr>

@@ -4,7 +4,9 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
+    @jobs = Job.all.alphabetical
+    @active_jobs = Job.active.alphabetical
+    @inactive_jobs = Job.inactive.alphabetical
   end
 
   # GET /jobs/1

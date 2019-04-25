@@ -81,6 +81,7 @@ class Shift < ApplicationRecord
 #g) 'for_next_days' -- which returns all the upcoming shifts in the next 'x' days (parameter: x)
   scope :for_next_days, ->(x) { where('date between ? and ?', Date.today, x.days.from_now.to_date) }
 
+
 #h) 'for_past_days' -- which returns all the past shifts in the previous 'x' days (parameter: x)'chronological' -- which orders values chronologically in ascending order
   scope :for_past_days, ->(x) { where('date between ? and ?', x.days.ago.to_date, 1.day.ago.to_date) }
 
