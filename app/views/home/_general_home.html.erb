@@ -1,10 +1,9 @@
 <html>
 
   <body>
-<div class="container1">
 
-<h1>WELCOME TO A&M CREAMERY</h1>
-<br/>
+
+<h1>WELCOME TO A&M CREAMERY!
 		<h2>
 			A&M Creamery is one of the smallest, but absolutely best, chain of
 			ice cream shops we know in the Greater Pittsburgh area.
@@ -15,7 +14,39 @@
 			A&M Creamery store now.
 			(Still reading? What are you waiting for?)
 		</h2>
-	</div>
+</h1>
+	
+	<h1>Stores</h1>
+<!------ STORES INDEX TABLE START ---------->
+<h3>
+<table id="dt-select" class="table" cellspacing="5" cellpadding="5" style="font-family:courier; font-size:12px;">
+  <thead>
+    <tr>
+      <th>Store Name</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Phone</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stores.each do |store| %>
+      <tr>
+        <td><%= store.name %></td>
+        <td><%= store.street %></td>
+        <td><%= store.city %></td>
+        <td><%= store.state %></td>
+        <td><%= store.zip %></td>
+        <td><%= store.phone %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</h3>
+<br><br>
 
 <!------ CSS STYLING FOR GENERAL HOME PAGE INDEX ---------->
 <style>
@@ -29,15 +60,15 @@ body {
   }
 h1 {
     font-size: 1.5em;
-    font-family: garamond;
-    outline: 5px dotted #FF0999;
+    font-family: courier;
+    outline: 1px dotted #FF0999;
     background-color: #FFFF;
     margin: 30px;
     padding: 30px;
 }
 h2 {
-    font-size: 1.5em;
-    font-family: garamond;
+    font-size: 1em;
+    font-family: courier;
     outline: 5px dotted #FF0999;
     background-color: #FFFF;
     margin: 30px;

@@ -1,45 +1,68 @@
 <% if logged_in? and current_user.role? :admin %>
 <!------shifts ALL INDEX TABLE START ---------->
 
+<table id="dt-select" class="table" cellspacing="5" cellpadding="5" style="font-family:courier; font-size:12px;">
+  <thead>
+    <tr>
+      <th><div class="dropdown">
+            <button class="button5" align="center">Incomplete Shifts</button>
+            <div class="dropdown-content">
+            <%=render partial: "incomplete_shifts" %>
+            </div>
+            </div></th>
+      <th>
+            <div class="dropdown">
+            <button class="button5" align="center">Completed Shifts</button>
+            <div class="dropdown-content">
+            <%=render partial: "completed_shifts" %>
+            </div>
+            </div></th>
+      <th>
+            <div class="dropdown">
+            <button class="button5" align="center">Completed Past Shifts</button>
+            <div class="dropdown-content">
+            <%=render partial: "completed_past_shifts" %>
+            </div>
+            </div></th>
+<th>
+            <div class="dropdown">
+            <button class="button5" align="center">Incomplete Past Shifts</button>
+            <div class="dropdown-content">
+            <%=render partial: "incomplete_past_shifts" %>
+            </div>
+            </div></th>
+            </th>
+</tr>
+
+<table id="dt-select" class="table" cellspacing="5" cellpadding="5" style="font-family:courier; font-size:12px;">
+  <thead>
+        <th>
+          <div class="dropdown">
+          <button class="button5" align="center">Upcoming Shifts</button>
+          <div class="dropdown-content">
+          <%=render partial: "upcoming_shifts" %>
+          </div>
+          </div>
+          </th>
+<th>
 <div class="dropdown">
-<button class="button5">Incomplete Shifts</button>
+<button class="button5" align="right">For Next 7 Days</button>
 <div class="dropdown-content">
-<%=render partial: "incomplete_shifts" %>
+<%=render partial: "for_next_days" %>
 </div>
 </div>
-
+</th>
+<th>
 <div class="dropdown">
-<button class="button5">Completed Shifts</button>
+<button class="button5" align="center">For Past 7 Days</button>
 <div class="dropdown-content">
-<%=render partial: "completed_shifts" %>
+<%=render partial: "for_next_days" %>
 </div>
 </div>
-
-
-<div class="dropdown">
-<button class="button5">Completed Past Shifts</button>
-<div class="dropdown-content">
-<%=render partial: "completed_past_shifts" %>
-</div>
-</div>
-
-
-<div class="dropdown">
-<button class="button5">Incomplete Past Shifts</button>
-<div class="dropdown-content">
-<%=render partial: "incomplete_past_shifts" %>
-</div>
-</div>
-
-
-<div class="dropdown">
-<button class="button5">Upcoming Shifts</button>
-<div class="dropdown-content">
-<%=render partial: "upcoming_shifts" %>
-</div>
-</div>
-
-
+<th colspan="3"></th>
+</tr>
+</thead>
+</table>
 
  <%= render partial: "all_shifts" %>
 
@@ -223,5 +246,6 @@ a:hover {
     height:70px;
     width:100%;
 }
+
 </style>
 

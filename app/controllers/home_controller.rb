@@ -4,6 +4,9 @@ class HomeController < ApplicationController
 #https://github.com/divya/
 
   def home
+    @stores = Store.all
+    @shifts = Shift.all
+    @employees = Employee.all
     @active_stores = Store.active
     @active_flavors = Flavor.active
   end
@@ -45,6 +48,7 @@ class HomeController < ApplicationController
 
   def admin_home
     @employee = current_user.employee
+    @shifts = Shift.all
     @active_stores = Store.active.alphabetical.paginate(page: params[:active_stores]).per_page(5)
     @active_flavors = Flavor.active.alphabetical.paginate(page: params[:active_flavors]).per_page(5)
     @active_jobs = Job.active.alphabetical.paginate(page: params[:active_jobs]).per_page(5)

@@ -10,6 +10,8 @@ class ShiftsController < ApplicationController
     @all_shifts = Shift.all
     @past_shifts_completed = Shift.past.completed
     @past_shifts_incomplete = Shift.past.incomplete
+    @next_7_days = Shift.for_next_days(7)
+    @past_7_days = Shift.for_past_days(7)
     @upcoming_shifts = Shift.upcoming
     @shifts_by_store = Shift.by_store
     @shifts_by_employee = Shift.by_employee
