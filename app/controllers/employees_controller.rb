@@ -4,7 +4,9 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
+    @employees = Employee.all.alphabetical
+    @active_employees = Employee.active.alphabetical
+    @inactive_employees = Employee.inactive.alphabetical
   end
 
   # GET /employees/1

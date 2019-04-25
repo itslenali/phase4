@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   resources :layouts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :to => 'home#home' 
-    
-    
    get 'signup' => 'users#new', :as => :signup
    get 'login' => 'sessions#new', :as => :login
    get 'login', :controller => 'sessions', :action => 'new'
