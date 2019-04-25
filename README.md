@@ -1,24 +1,18 @@
-# README
+This is the A&M Creamery Project for the 67-272 class.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Use the following credentials to log in:
 
-Things you may want to cover:
+Admin:
+example@example.com
+hello
 
-* Ruby version
+Manager:
+manager@example.com
+hello
 
-* System dependencies
+Employee:
+employee@example.com
+hello
 
-* Configuration
+See code for relevant code, image, and other citations
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
